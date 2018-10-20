@@ -33,7 +33,7 @@ def sample_text_function1():
 	t_matrix = [[matrix[j][i] for j in xrange(3)] for i in xrange(3)]
 	print("This is the transpose of the input matrix")
 	for i in range(3):
-		print( "Row %i : %s" % (i+1, str(t_matrix[i])) )
+		print( "Row %s : %s" % (i+1, str(t_matrix[i])) )
 	
 sample_text_function1()
 
