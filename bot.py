@@ -94,6 +94,8 @@ def write_bot_backend_from_rules(rules_in_json):
     backend_file_path = 'backend/handler.py'
     with open(backend_file_path, 'a') as file_writer:
         file_writer.write(function_def_head + '' + rules_in_json['function'] + bracket_without_params + new_line())
+        file_writer.write('response = {}' + new_line() +
+                          'calc_stage = 0' + new_line())  # creating dict for saving response series
         for rule in rules_in_json['questions']:
             print(rule)
             # local variables to identify the rule type
@@ -146,34 +148,8 @@ def write_bot_backend_from_rules(rules_in_json):
             elif is_formula:
                 file_writer.write(write_formula(rule['var'], rule['formula']))
 
-            # try:
-            #     if rule['instruction']:
-            #         file_writer.write(print_something(rule['instruction']) + new_line())
-            #         continue
-            # except KeyError as e: pass
-            #
-            # try:
-            #     if rule['conditions']:
-            #         file_writer.write(write_conditions(rule['var'], rule['text'], rule['conditions']))
-            #         continue
-            # except KeyError: pass
-            #
-            # is_text_done = False
-            #
-            # try:
-            #     if rule['text'] and rule['options']:
-            #         file_writer.write(get_input_writer_with_option(rule['var'], rule['text'], rule['options'])
-            #                           + new_line())
-            #         is_text_done = True
-            #
-            # except KeyError as e:
-            #     try:
-            #         if rule['text'] and not is_text_done:
-            #             file_writer.write(get_input_writer(rule['var'], rule['text']) + new_line())
-            #     except KeyError as e:
-            #         pass
-
         file_writer.write('\n')  # ending file
+        file_writer.close()
 
 
 if __name__ == '__main__':
