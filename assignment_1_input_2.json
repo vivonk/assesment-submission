@@ -80,7 +80,7 @@
         {
             "list_var":"True",
             "list_length":"3",
-            "instruction":"Row %i : %s",
+            "instruction":"Row %s : %s",
             "instruction_var":[
                 "i+1",
                 "str(t_matrix[i])"
